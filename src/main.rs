@@ -41,7 +41,7 @@ fn main() {
     let ata_sender = get_associated_token_address(&wallet_publickey,&token_mint_pub);
 
 
-    for chunk in records.chunks(15) {
+    for chunk in records.chunks(3) {
         let mut ins: Vec<Instruction> = vec![];
 
     for record in chunk {
@@ -69,10 +69,9 @@ fn main() {
     }
      let mut tx = Transaction::new_with_payer(&ins, fee_payer);
         tx.sign(&signers, recent);
-        // let messagee = encode(tx.message_data());
 
-        // let simulation = rpc_client.simulate_transaction(&tx);
-        // println!("{:?}", simulation);
+        let simulation = rpc_client.simulate_transaction(&tx);
+        println!("{:?}", simulation);
         let send = rpc_client.send_and_confirm_transaction_with_spinner(&tx);
         // println!(
         //     "tx: {:?} \nmint:{:?}\nresult:{:?}",
