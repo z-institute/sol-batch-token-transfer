@@ -35,7 +35,7 @@ fn main() {
     let signers: Vec<&Keypair> = vec![&key_pair];
     // change RPC endpoint here
     let rpc_url: String = env::var("NETWORK_RPC").unwrap();
-    let commitment = CommitmentConfig::confirmed();
+    let commitment = CommitmentConfig::processed();
     let rpc_client = RpcClient::new_with_commitment(&rpc_url, commitment);
     let recent = rpc_client
     .get_latest_blockhash()
@@ -44,7 +44,7 @@ fn main() {
     let ata_sender = get_associated_token_address(&wallet_publickey,&token_mint_pub);
 
 
-    for chunk in records.chunks(3) {
+    for chunk in records.chunks(4) {
         let mut ins: Vec<Instruction> = vec![];
 
     for record in chunk {
