@@ -41,7 +41,7 @@ fn main() {
     let ata_sender = get_associated_token_address(&wallet_publickey,&token_mint_pub);
 
 
-    for chunk in records.chunks(10) {
+    for chunk in records.chunks(15) {
         let mut ins: Vec<Instruction> = vec![];
 
     for record in chunk {
