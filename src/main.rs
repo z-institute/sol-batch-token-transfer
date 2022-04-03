@@ -11,6 +11,7 @@ use solana_sdk::{
 };
 use spl_associated_token_account::{create_associated_token_account,get_associated_token_address};
 use std::vec::Vec;
+use std::{thread, time};
 
 #[derive(Debug, Clone)]
 pub struct Record {
@@ -21,6 +22,8 @@ pub struct Record {
 
 fn main() {
     dotenv().ok();
+    let one_second = time::Duration::from_millis(1000);
+
     let records = util::read_from_file("data.csv").unwrap();
 
     let mut wtr = csv::Writer::from_path("done.csv").unwrap();
@@ -86,6 +89,7 @@ fn main() {
             wtr.serialize((&rec.address, &rec.amount, tx_hash.to_string())).unwrap();
         }
         wtr.flush().unwrap();
+        thread::sleep(one_second);
     }
 
     // println!("Hello, world!");
