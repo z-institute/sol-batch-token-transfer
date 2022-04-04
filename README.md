@@ -1,5 +1,7 @@
 # Sol Batch Token Transfer CSV
 
+This script can batch transfer any SPL token to multiple addresses listed in a CSV, and then save the tx hash to a new CSV. You can use the following mainnet fork RPC to test the functionalities for free. 
+
 - Mainnet: https://api.mainnet-beta.solana.com
 - Mainnet Fork: https://rpc-mainnet-fork.dappio.xyz
 
@@ -21,3 +23,8 @@ solana balance HXcdCwwu1wkS882Gs8rRV6f83MyestRyB5HmWGwuiFiq --url https://rpc-ma
    
 ## Debug
 - https://explorer.solana.com/tx/inspector 
+
+## Inquiry
+
+- https://zinstitute.net
+- consulting@zinstitute.net
